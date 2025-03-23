@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=500 height=900 tabindex="-1"></canvas>
+      <canvas id="unity-canvas" width=500 height=800 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -52,12 +52,12 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/BtfdSurvival.loader.js";
+      var loaderUrl = buildUrl + "/BTFD.loader.js";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/BtfdSurvival.data",
-        frameworkUrl: buildUrl + "/BtfdSurvival.framework.js",
-        codeUrl: buildUrl + "/BtfdSurvival.wasm",
+        dataUrl: buildUrl + "/BTFD.data",
+        frameworkUrl: buildUrl + "/BTFD.framework.js",
+        codeUrl: buildUrl + "/BTFD.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "MonsterSurvivor",
@@ -90,7 +90,7 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
         canvas.style.width = "500px";
-        canvas.style.height = "900px";
+        canvas.style.height = "800px";
       }
 
       document.querySelector("#unity-loading-bar").style.display = "block";
@@ -103,7 +103,7 @@
               }).then((unityInstance) => {
                 document.querySelector("#unity-loading-bar").style.display = "none";
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
+                  document.makeFullscreen('unity-container');
                 };
 
               }).catch((message) => {
