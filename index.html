@@ -6,6 +6,8 @@
     <title>Unity Web Player | MonsterSurvivor</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000"/>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -113,6 +115,20 @@
 
       document.body.appendChild(script);
 
+    </script>
+    <script>
+      // Register Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then((registration) => {
+              console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
     </script>
   </body>
 </html>
